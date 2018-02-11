@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600|Ubuntu" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Todo</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="text-center m-3">Todo!</h1>
+
+        <div class="flex flex-col lg:flex-row max-w-lg justify-between m-auto">
+
+            <div class="border-solid border-grey border w-full m-1">
+                <div class="bg-yellow-light w-full">
+                    <h2 class="p-2">Todo:</h2>
+                </div>
+
+                <ul class="p-0">
+                    <li class="flex justify-between list-reset m-2">
+                        <span class="w-full">Example</span>
+                        <i class="material-icons">check</i>
+                        <i class="material-icons">delete</i>
+                    </li>
+                </ul>
+
+                <div class="flex justify-between bg-grey-light w-full">
+                    <span class="m-2">Clear list</span>
+                    <i class="material-icons m-2">clear</i>
+                </div>
+            </div>
+
+            <div class="border-solid border-grey border w-full m-1">
+                <div class="bg-green w-full">
+                    <h2 class="p-2">Completed:</h2>
+                </div>
+
+                <ul class="p-0">
+                    <li class="flex justify-between list-reset m-2">
+                        <span class="w-full">Example</span>
+                        <i class="material-icons">redo</i>
+                        <i class="material-icons">delete</i>
+                    </li>
+                </ul>
+
+                <div class="flex justify-between bg-grey-light w-full">
+                    <span class="m-2">Clear list</span>
+                    <i class="material-icons m-2">clear</i>
+                </div>
+            </div>
+
+        </div>
+
+        <form class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto mt-4">
+            <input class="appearance-none border-solid border-grey border p-2 rounded w-4/5" type="text" placeholder="Add new task"/>
+            <button class="appearance-none bg-grey-light rounded w-1/6 h-10" type="submit">Add
+                <i class="material-icons align-text-bottom">add</i>
+            </button>
+        </form>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
