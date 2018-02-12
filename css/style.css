@@ -19,5 +19,9 @@ p, span {
     display: none;
 }
 
+.min-h-2 {
+    min-height: 2.5rem;
+}
+
 
 
