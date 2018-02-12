@@ -5,3 +5,16 @@ h1, h2 {
 p, span {
     font-family: 'Open Sans';
 }
+
+#list-item-template,
+#done-list-item-template {
+    display: none;
+}
+
+#completed-list .check-button {
+    display: none;
+}
+
+#todo-list .uncheck-button {
+    display: none;
+}

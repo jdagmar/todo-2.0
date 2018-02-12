@@ -18,39 +18,57 @@
 
         <div class="flex flex-col lg:flex-row max-w-lg justify-between m-auto">
 
-            <div class="border-solid border-grey border w-full m-1">
+            <div class="flex flex-col justify-between border-solid border-grey border w-full m-1 items-start">
                 <div class="bg-yellow-light w-full">
                     <h2 class="p-2">Todo:</h2>
                 </div>
 
-                <ul class="p-0">
-                    <li class="flex justify-between list-reset m-2">
-                        <span class="w-full">Example</span>
-                        <i class="material-icons">check</i>
-                        <i class="material-icons">delete</i>
+                <ul id="todo-list" class="p-0 h-full w-full">
+                    <li id="list-item-template" class="flex justify-between list-reset m-2 todo-item">
+                        <span class="w-full flex-grow todo-title"></span>
+                        <div class="flex-no-shrink">
+                            <button id="check-button" class="apperance-none check-button">
+                                <i class="material-icons">check</i>
+                            </button>
+                            <button class="apperance-none uncheck-button">
+                                <i class="material-icons">redo</i>
+                            </button>
+                            <button id="delete-button" class="apperance-none delete-button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </li>
                 </ul>
 
-                <div class="flex justify-between bg-grey-light w-full">
+                <div id="delete-all-todos" class="flex-none flex justify-between bg-grey-light w-full">
                     <span class="m-2">Clear list</span>
                     <i class="material-icons m-2">clear</i>
                 </div>
             </div>
 
-            <div class="border-solid border-grey border w-full m-1">
+            <div class="flex flex-col justify-between border-solid border-grey border w-full m-1 items-start">
                 <div class="bg-green w-full">
                     <h2 class="p-2">Completed:</h2>
                 </div>
 
-                <ul class="p-0">
-                    <li class="flex justify-between list-reset m-2">
-                        <span class="w-full">Example</span>
-                        <i class="material-icons">redo</i>
-                        <i class="material-icons">delete</i>
+                <ul id="completed-list" class="p-0 h-full w-full">
+                    <li id="done-list-item-template" class="flex justify-between list-reset m-2 todo-item">
+                        <span class="flex-grow done-title">Example</span>
+                        <div class="flex-no-shrink">
+                            <button id="check-button" class="apperance-none check-button">
+                                <i class="material-icons">check</i>
+                            </button>
+                            <button class="apperance-none uncheck-button">
+                                <i class="material-icons">redo</i>
+                            </button>
+                            <button id="delete-button" class="apperance-none">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </li>
                 </ul>
 
-                <div class="flex justify-between bg-grey-light w-full">
+                <div id="delete-all-completed" class="flex-none flex justify-between bg-grey-light w-full">
                     <span class="m-2">Clear list</span>
                     <i class="material-icons m-2">clear</i>
                 </div>
@@ -58,10 +76,12 @@
 
         </div>
 
-        <form class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto mt-4">
-            <input class="appearance-none border-solid border-grey border p-2 rounded w-4/5" type="text" placeholder="Add new task"/>
-            <button class="appearance-none bg-grey-light rounded w-1/6 h-10" type="submit">Add
-                <i class="material-icons align-text-bottom">add</i>
+        <form id="form" class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto mt-4">
+            <input id="input" class="appearance-none border-solid border-grey border p-2 rounded w-4/5" type="text" placeholder="Add new task"
+            />
+            <button id="" class="flex items-center justify-around appearance-none bg-grey-light rounded w-1/6 h-10" type="submit">
+                <span>Add todo</span>
+                <i class="material-icons">add</i>
             </button>
         </form>
     </main>
