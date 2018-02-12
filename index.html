@@ -8,19 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600|Ubuntu" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Todo</title>
 </head>
 
 <body>
     <main>
-        <h1 class="text-center m-3">Todo!</h1>
+        <h1 class="text-center m-3">Just do it!!</h1>
+        <h2 class="text-center m-3">Just an amazing todo list.</h2>
 
-        <div class="flex flex-col lg:flex-row max-w-lg justify-between m-auto">
+        <div class="flex flex-col justify-between m-auto max-w-lg">
 
             <div class="flex flex-col justify-between border-solid border-grey border w-full m-1 items-start">
                 <div class="bg-yellow-light w-full">
-                    <h2 class="p-2">Todo:</h2>
+                    <h2 class="p-2">Unfinished tasks</h2>
                 </div>
 
                 <ul id="todo-list" class="p-0 h-full w-full">
@@ -40,20 +41,20 @@
                     </li>
                 </ul>
 
-                <div id="delete-all-todos" class="flex-none flex justify-between bg-grey-light w-full">
-                    <span class="m-2">Clear list</span>
-                    <i class="material-icons m-2">clear</i>
-                </div>
+                <button id="delete-all-todos" class="flex-none flex justify-center items-center bg-grey-light w-full">
+                    <span class="p-1">Clear list</span>
+                    <i class="material-icons p-1">clear</i>
+                </button>
             </div>
 
             <div class="flex flex-col justify-between border-solid border-grey border w-full m-1 items-start">
                 <div class="bg-green w-full">
-                    <h2 class="p-2">Completed:</h2>
+                    <h2 class="p-2">Finished tasks</h2>
                 </div>
 
                 <ul id="completed-list" class="p-0 h-full w-full">
                     <li id="done-list-item-template" class="flex justify-between list-reset m-2 todo-item">
-                        <span class="flex-grow done-title">Example</span>
+                        <span class="flex-grow done-title"></span>
                         <div class="flex-no-shrink">
                             <button id="check-button" class="apperance-none check-button">
                                 <i class="material-icons">check</i>
@@ -68,19 +69,21 @@
                     </li>
                 </ul>
 
-                <div id="delete-all-completed" class="flex-none flex justify-between bg-grey-light w-full">
-                    <span class="m-2">Clear list</span>
-                    <i class="material-icons m-2">clear</i>
-                </div>
+                <button id="delete-all-completed" class="flex-none flex justify-center items-center bg-grey-light w-full">
+                    <span class="p-1">Clear list</span>
+                    <i class="material-icons p-1">clear</i>
+                </button>
             </div>
 
         </div>
 
-        <form id="form" class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto mt-4">
-            <input id="input" class="appearance-none border-solid border-grey border p-2 rounded w-4/5" type="text" placeholder="Add new task"
-            />
-            <button id="" class="flex items-center justify-around appearance-none bg-grey-light rounded w-1/6 h-10" type="submit">
-                <span>Add todo</span>
+        <form id="form" class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto lg:mt-4">
+            <label for="new task" hidden="true">Add new task</label>
+            <input id="input" class="appearance-none border-solid border-grey border p-2 rounded w-4/5" 
+            name="new task" type="text" placeholder="Add new task to the list..."/>
+            <button class="flex items-center justify-center appearance-none bg-grey-light rounded lg:w-1/6 sm:w-full h-full p-1" 
+            type="submit">
+                <span class="p-1">Add todo</span>
                 <i class="material-icons">add</i>
             </button>
         </form>

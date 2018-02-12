@@ -29,26 +29,30 @@ const addTodo = () => {
 };
 
 const unCheck = (todoEl) => {
+    const todoItem = todoEl.querySelector('.todo-title');
     todoList.appendChild(todoEl);
+    todoItem.classList.remove('line-through');
 }
 
 const checkOff = (todoEl) => {
+    const todoItem = todoEl.querySelector('.todo-title');
     completedList.appendChild(todoEl);
+    todoItem.classList.add('line-through');
 }
 
 const deleteTodo = (todoEl) => {
     todoEl.remove();
 };
 
-form.addEventListener('submit', function(event){
+form.addEventListener('submit', function (event) {
     event.preventDefault();
     addTodo();
 });
 
 const deleteAll = (list) => {
     const listItems = list.querySelectorAll('.todo-item');
-    
-    for (const listItem of listItems){
+
+    for (const listItem of listItems) {
         listItem.remove();
     }
 }
