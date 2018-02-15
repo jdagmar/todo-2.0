@@ -2,7 +2,7 @@ h1, h2 {
     font-family: 'Ubuntu';
 }
 
-p, span {
+p, span, input {
     font-family: 'Open Sans';
 }
 
@@ -27,5 +27,8 @@ p, span {
     min-height: 2.5rem;
 }
 
+.group:hover .group-hover\:text-green {
+    color: #90EE90;
+}
 
 
