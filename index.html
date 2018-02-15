@@ -15,7 +15,7 @@
 <body>
     <main class="m-2">
 
-        <div id="alert" class="m-auto p-2 text-center bg-red-lightest border border-1 border-red-light max-w-md hidden">
+        <div id="alert" class="m-auto p-2 text-center bg-red-lightest max-w-md hidden">
             <span>The task you tried to add already exist</span>
             <i class="material-icons text-red-light align-bottom">error</i>
         </div>
@@ -48,7 +48,7 @@
                 </ul>
 
                 <button id="delete-all-todos" class="flex-none flex justify-center items-center bg-grey-light w-full">
-                    <span class="p-1">Clear list</span>
+                    <span class="p-1">Clear all unfinished</span>
                     <i class="material-icons p-1">clear</i>
                 </button>
             </div>
@@ -76,7 +76,7 @@
                 </ul>
 
                 <button id="delete-all-completed" class="flex-none flex justify-center items-center bg-grey-light w-full">
-                    <span class="p-1">Clear list</span>
+                    <span class="p-1">Clear all finished</span>
                     <i class="material-icons p-1">clear</i>
                 </button>
             </div>
@@ -85,14 +85,20 @@
 
         <form id="form" class="flex flex-col lg:flex-row justify-between items-center max-w-lg m-auto lg:mt-4">
             <label for="new task" hidden="true">Add new task</label>
-            <input id="input" class="appearance-none border-solid border-grey border p-2 rounded w-4/5 sm:w-full" 
-            name="new task" type="text" placeholder="Add new task to the list..."/>
-            <button class="flex items-center justify-center appearance-none bg-grey-light rounded lg:w-1/6 sm:w-full h-full p-1" 
-            type="submit">
+            <input id="input" class="appearance-none border-solid border-grey border p-2 rounded w-4/5 sm:w-full" name="new task" type="text"
+                placeholder="Add new task to the list..." />
+            <button class="flex items-center justify-center appearance-none bg-grey-light rounded lg:w-1/6 sm:w-full h-full p-1" type="submit">
                 <span class="p-1">Add todo</span>
                 <i class="material-icons">add</i>
             </button>
         </form>
+
+        <div class="m-2">
+            <button id="delete-all" class="flex items-center justify-center border border-1 border-red-lighter rounded p-1 m-auto">
+                <span>Delete all tasks</span>
+                <i class="material-icons align-middle">clear</i>
+            </button>
+        </div>
     </main>
     <script src="main.js"></script>
 </body>

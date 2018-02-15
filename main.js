@@ -91,6 +91,24 @@ const deleteTodo = (todoEl) => {
     saveTodo();
 };
 
+
+
+const deleteAllButton = document.getElementById('delete-all');
+
+const clearAll = () => {
+    const listItems = document.querySelectorAll('.todo-item');
+
+    for (const listItem of listItems) {
+        listItem.remove();
+    }
+
+    saveTodo();
+}
+
+deleteAllButton.addEventListener('click', clearAll);
+
+
+
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     addTodo(input.value, true);
