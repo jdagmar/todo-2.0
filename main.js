@@ -1,14 +1,13 @@
-
-const input = document.getElementById('input');
-const addButton = document.getElementById('add-Button');
-const todoList = document.getElementById('todo-list');
-const completedList = document.getElementById('completed-list');
 const form = document.getElementById('form');
-const template = document.getElementById('list-item-template');
-const templateDone = document.getElementById('done-list-item-template');
-const deleteButton = document.getElementById('delete-button');
-const todoEl = '';
-const doneEl = '';
+const input = document.getElementById('input');
+
+const unfinishedList = document.getElementById('unfinished-list');
+const finishedList = document.getElementById('finished-list');
+
+const unfinishedTemplate = document.getElementById('unfinished-template');
+const finishedTemplate = document.getElementById('finished-template');
+
+const todoElement = '';
 
 let todos = [
     { title: 'This is a finished task', completed: true },
@@ -26,7 +25,6 @@ const isValidInput = (todoTitle) => {
     }
 
     return true;
-
 }
 
 const addTodo = (todoTitle, validate) => {
@@ -35,35 +33,37 @@ const addTodo = (todoTitle, validate) => {
        return;
     }
 
-    const todoEl = template.cloneNode(true);
-    todoEl.id = '';
+    const todoElement = unfinishedTemplate.cloneNode(true);
 
-    const todoItem = todoEl.querySelector('.todo-title');
-    const deleteButton = todoEl.querySelector('.delete-button');
-    const checkButton = todoEl.querySelector('.check-button');
-    const uncheckButton = todoEl.querySelector('.uncheck-button');
+    todoElement.id = '';
+
+    const todoItem = todoElement.querySelector('.todo-title');
+    const deleteButton = todoElement.querySelector('.delete-button');
+    const checkButton = todoElement.querySelector('.check-button');
+    const undoButton = todoElement.querySelector('.undo-button');
 
     todoItem.innerText = todoTitle;
 
-    deleteButton.addEventListener('click', () => deleteTodo(todoEl));
-    checkButton.addEventListener('click', () => checkOff(todoEl));
-    uncheckButton.addEventListener('click', () => unCheck(todoEl));
+    deleteButton.addEventListener('click', () => deleteTodo(todoElement));
+    checkButton.addEventListener('click', () => checkOffTodo(todoElement));
+    undoButton.addEventListener('click', () => undoTodo(todoElement));
 
-    todoList.appendChild(todoEl);
+    unfinishedList.appendChild(todoElement);
 
-    saveTodo();
-    return todoEl;
+    updateTodos();
+    return todoElement;
 };
 
-const saveTodo = () => {
-    const todoItems = todoList.querySelectorAll('.todo-item:not([id="list-item-template"]) .todo-title');
+const updateTodos = () => {
+
+    const todoItems = unfinishedList.querySelectorAll('.todo-item:not([id="unfinished-template"]) .todo-title');
     todos = [];
 
     for (const todo of todoItems) {
         todos.push({ title: todo.innerText, completed: false });
     }
 
-    const completedItems = completedList.querySelectorAll('.todo-item:not([id="done-list-item-template"]) .todo-title');
+    const completedItems = finishedList.querySelectorAll('.todo-item:not([id="finished-template"]) .todo-title');
 
     for (const todo of completedItems) {
         todos.push({ title: todo.innerText, completed: true });
@@ -72,38 +72,38 @@ const saveTodo = () => {
     window.localStorage.todoData = JSON.stringify(todos);
 }
 
-const unCheck = (todoEl) => {
-    const todoItem = todoEl.querySelector('.todo-title');
-    todoList.appendChild(todoEl);
+const undoTodo = (todoElement) => {
+    const todoItem = todoElement.querySelector('.todo-title');
+    unfinishedList.appendChild(todoElement);
     todoItem.classList.remove('line-through');
-    saveTodo();
+    updateTodos();
 }
 
-const checkOff = (todoEl) => {
-    const todoItem = todoEl.querySelector('.todo-title');
-    completedList.appendChild(todoEl);
+const checkOffTodo = (todoElement) => {
+    const todoItem = todoElement.querySelector('.todo-title');
+    finishedList.appendChild(todoElement);
     todoItem.classList.add('line-through');
-    saveTodo();
+    updateTodos();
 }
 
-const deleteTodo = (todoEl) => {
-    todoEl.remove();
-    saveTodo();
+const deleteTodo = (todoElement) => {
+    todoElement.remove();
+    updateTodos();
 };
 
-const deleteAllButton = document.getElementById('delete-all');
+const deleteAllButton = document.getElementById('delete-all-button');
 
-const clearAll = () => {
+const deleteAllTodos = () => {
     const listItems = document.querySelectorAll('.todo-item');
 
     for (const listItem of listItems) {
         listItem.remove();
     }
 
-    saveTodo();
+    updateTodos();
 }
 
-deleteAllButton.addEventListener('click', clearAll);
+deleteAllButton.addEventListener('click', deleteAllTodos);
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -112,30 +112,30 @@ form.addEventListener('submit', function (event) {
     input.focus();
 });
 
-const deleteAll = (list) => {
+const clearListOfTodos = (list) => {
     const listItems = list.querySelectorAll('.todo-item');
 
     for (const listItem of listItems) {
         listItem.remove();
     }
 
-    saveTodo();
+    updateTodos();
 }
 
-const deleteAllTodosButton = document.getElementById('delete-all-todos');
-const deleteAllCompletedButton = document.getElementById('delete-all-completed');
+const clearAllUnfinishedButton = document.getElementById('clear-all-unfinished');
+const clearAllFinisheddButton = document.getElementById('clear-all-finished');
 
-deleteAllTodosButton.addEventListener('click', () => deleteAll(todoList));
-deleteAllCompletedButton.addEventListener('click', () => deleteAll(completedList));
+clearAllUnfinishedButton.addEventListener('click', () => clearListOfTodos(unfinishedList));
+clearAllFinisheddButton.addEventListener('click', () => clearListOfTodos(finishedList));
 
 if (window.localStorage.todoData) {
     todos = JSON.parse(window.localStorage.todoData);
 }
 
 for (const todo of todos) {
-    const todoEl = addTodo(todo.title, false);
+    const todoElement = addTodo(todo.title, false);
 
     if (todo.completed) {
-        checkOff(todoEl);
+        checkOffTodo(todoElement);
     }
 }

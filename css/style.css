@@ -1,17 +1,10 @@
-#list-item-template,
-#done-list-item-template {
+#unfinished-template,
+#finished-template {
     display: none;
 }
 
-#completed-list .check-button {
-    display: none;
-}
-
-#todo-list .uncheck-button {
-    display: none;
-}
-
-.hidden {
+#finished-list .check-button,
+#unfinished-list .undo-button {
     display: none;
 }
 
