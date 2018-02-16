@@ -1,5 +1,5 @@
-#todo
-##by Jessica Gustavsson
+# todo
+## by Jessica Gustavsson
 
-###Framework
+### Framework
 The styling is mainly done with Tailwind CSS. 
