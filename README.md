@@ -1,8 +1,9 @@
 # todo
 by Jessica Gustavsson
 
-### What to do?
-What to do is a todo list app made with JS.
+### What is todo?
+Todo is an to-do list made with JS.
 
 ### Framework
-The styling is mainly done with Tailwind CSS. 
+For styling i've used [Tailwind CSS](https://tailwindcss.com/).
+All icons are from [material icons](https://material.io/icons/).
