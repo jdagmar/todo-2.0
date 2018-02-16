@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <main class="m-3 max-w-lg m-auto">
-
-        <div id="alert" class="m-auto p-2 text-center bg-red-lightest max-w-md hidden">
+    <main class="max-w-lg m-auto">
+        
+        <div id="alert" class="m-2 lg:mt-2 lg:mr-0 lg:ml-0 lg:m-auto p-2 text-center bg-red-lightest max-w-lg hidden">
             <span>The task you tried to add already exist</span>
             <i class="material-icons text-red-light align-bottom">error</i>
         </div>
@@ -44,7 +44,7 @@
                             <button id="check-button" class="apperance-none check-button group-hover:text-green">
                                 <i class="material-icons group-hover:text-green">check</i>
                             </button>
-                            <button class="apperance-none uncheck-button">
+                            <button class="apperance-none uncheck-button group-hover:text-blue">
                                 <i class="material-icons">redo</i>
                             </button>
                             <button id="delete-button" class="apperance-none delete-button">
@@ -64,20 +64,7 @@
                     <h2 class="p-2">Finished tasks</h2>
                 </div>
                 <ul id="completed-list" class="p-0 h-full w-full min-h-2">
-                    <li id="done-list-item-template" class="flex justify-between list-reset p-2 todo-item">
-                        <span class="flex-grow done-title"></span>
-                        <div class="flex-no-shrink">
-                            <button id="check-button" class="apperance-none check-button">
-                                <i class="material-icons">check</i>
-                            </button>
-                            <button class="apperance-none uncheck-button">
-                                <i class="material-icons">redo</i>
-                            </button>
-                            <button id="delete-button" class="apperance-none">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </div>
-                    </li>
+                    
                 </ul>
                 <button id="delete-all-completed" class="flex-none flex justify-center items-center bg-grey-light w-full">
                     <span class="p-1">Clear all finished</span>

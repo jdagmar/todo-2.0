@@ -91,8 +91,6 @@ const deleteTodo = (todoEl) => {
     saveTodo();
 };
 
-
-
 const deleteAllButton = document.getElementById('delete-all');
 
 const clearAll = () => {
@@ -106,8 +104,6 @@ const clearAll = () => {
 }
 
 deleteAllButton.addEventListener('click', clearAll);
-
-
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
