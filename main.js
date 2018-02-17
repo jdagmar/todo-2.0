@@ -7,8 +7,6 @@ const finishedList = document.getElementById('finished-list');
 const unfinishedTemplate = document.getElementById('unfinished-template');
 const finishedTemplate = document.getElementById('finished-template');
 
-const todoElement = '';
-
 let todos = [
     { title: 'This is a finished task', completed: true },
     { title: 'This is an unfinished task', completed: false }
@@ -123,10 +121,10 @@ const clearListOfTodos = (list) => {
 }
 
 const clearAllUnfinishedButton = document.getElementById('clear-all-unfinished');
-const clearAllFinisheddButton = document.getElementById('clear-all-finished');
+const clearAllFinishedButton = document.getElementById('clear-all-finished');
 
 clearAllUnfinishedButton.addEventListener('click', () => clearListOfTodos(unfinishedList));
-clearAllFinisheddButton.addEventListener('click', () => clearListOfTodos(finishedList));
+clearAllFinishedButton.addEventListener('click', () => clearListOfTodos(finishedList));
 
 if (window.localStorage.todoData) {
     todos = JSON.parse(window.localStorage.todoData);
@@ -139,3 +137,4 @@ for (const todo of todos) {
         checkOffTodo(todoElement);
     }
 }
+
