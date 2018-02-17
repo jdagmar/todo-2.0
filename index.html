@@ -38,16 +38,16 @@
                     <h2 class="p-2">Unfinished tasks</h2>
                 </div>
                 <ul id="unfinished-list" class="p-0 h-full w-full min-h-2">
-                    <li id="unfinished-template" class="flex justify-between list-reset p-2 group border-transparent border-solid border-t border-b hover:border-grey todo-item">
+                    <li id="unfinished-template" class="flex justify-between list-reset p-2 group border-transparent border-solid border-t border-b hover:border-grey todo-item opacity-0">
                         <span class="w-full flex-grow todo-title"></span>
                         <div class="flex-no-shrink">
-                            <button id="check-button" class="apperance-none check-button group-hover:text-green">
+                            <button id="check-button" class="appearance-none check-button group-hover:text-green">
                                 <i class="material-icons group-hover:text-green">check</i>
                             </button>
-                            <button class="apperance-none undo-button group-hover:text-blue">
+                            <button class="appearance-none undo-button group-hover:text-blue">
                                 <i class="material-icons">redo</i>
                             </button>
-                            <button id="delete-button" class="apperance-none delete-button">
+                            <button id="delete-button" class="appearance-none delete-button">
                                 <i class="material-icons">delete</i>
                             </button>
                         </div>
@@ -64,7 +64,20 @@
                     <h2 class="p-2">Finished tasks</h2>
                 </div>
                 <ul id="finished-list" class="p-0 h-full w-full min-h-2">
-                   
+                    <li id="finished-template" class="flex justify-between list-reset p-2 group border-transparent border-solid border-t border-b hover:border-grey todo-item opacity-0">
+                        <span class="w-full flex-grow todo-title"></span>
+                        <div class="flex-no-shrink">
+                            <button id="check-button" class="appearance-none check-button group-hover:text-green">
+                                <i class="material-icons group-hover:text-green">check</i>
+                            </button>
+                            <button class="appearance-none undo-button group-hover:text-blue">
+                                <i class="material-icons">redo</i>
+                            </button>
+                            <button id="delete-button" class="appearance-none delete-button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
+                    </li>
                 </ul>
                 <button id="clear-all-finished" class="flex-none flex justify-center items-center bg-grey-light w-full">
                     <span class="p-1">Clear all finished</span>
@@ -74,7 +87,7 @@
         </div>
 
         <div class="m-2 lg:mt-4 lg:mr-0">
-            <button id="delete-all-button" class="flex items-center border border-1 border-red-lighter rounded p-1 ml-auto hover:bg-red-lighter ">
+            <button id="delete-all-button" class="flex items-center border border-1 border-red-lighter p-1 ml-auto hover:bg-red-lighter ">
                 <span>Delete all tasks</span>
                 <i class="material-icons align-middle">clear</i>
             </button>

@@ -25,14 +25,13 @@ const isValidInput = (todoTitle) => {
     return true;
 }
 
-const addTodo = (todoTitle, validate) => {
+const addTodo = (todoTitle, validate, animate) => {
 
     if (validate && !isValidInput(todoTitle)){
        return;
     }
 
     const todoElement = unfinishedTemplate.cloneNode(true);
-
     todoElement.id = '';
 
     const todoItem = todoElement.querySelector('.todo-title');
@@ -43,8 +42,14 @@ const addTodo = (todoTitle, validate) => {
     todoItem.innerText = todoTitle;
 
     deleteButton.addEventListener('click', () => deleteTodo(todoElement));
-    checkButton.addEventListener('click', () => checkOffTodo(todoElement));
+    checkButton.addEventListener('click', () => checkOffTodo(todoElement, true));
     undoButton.addEventListener('click', () => undoTodo(todoElement));
+
+    if(animate){
+        todoElement.classList.add('fadeIn');
+    } else {
+        todoElement.classList.remove('opacity-0');
+    }
 
     unfinishedList.appendChild(todoElement);
 
@@ -77,16 +82,37 @@ const undoTodo = (todoElement) => {
     updateTodos();
 }
 
-const checkOffTodo = (todoElement) => {
+const checkOffTodo = (todoElement, animate) => {
     const todoItem = todoElement.querySelector('.todo-title');
-    finishedList.appendChild(todoElement);
     todoItem.classList.add('line-through');
-    updateTodos();
+
+    if (animate){
+        todoItem.classList.add('fadeOut');
+        setTimeout(() => {
+            finishedList.appendChild(todoElement);
+            todoItem.classList.remove('fadeOut');
+            todoItem.classList.add('fadeIn');
+            updateTodos();
+        }, 400);
+        
+    } else {
+        todoItem.classList.remove('opacity-0');
+        finishedList.appendChild(todoElement);
+        updateTodos();
+        return;
+    }
+
 }
 
 const deleteTodo = (todoElement) => {
-    todoElement.remove();
-    updateTodos();
+
+    todoElement.classList.add('fadeOut');
+
+    setTimeout(() => {
+      todoElement.remove();
+      updateTodos();
+    }, 400);
+   
 };
 
 const deleteAllButton = document.getElementById('delete-all-button');
@@ -95,17 +121,22 @@ const deleteAllTodos = () => {
     const listItems = document.querySelectorAll('.todo-item');
 
     for (const listItem of listItems) {
-        listItem.remove();
-    }
 
-    updateTodos();
+        listItem.classList.add('fadeOut');
+
+        setTimeout(() => {
+            listItem.remove();
+            updateTodos();
+        }, 400);
+       
+    }
 }
 
 deleteAllButton.addEventListener('click', deleteAllTodos);
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
-    addTodo(input.value, true);
+    addTodo(input.value, true, true);
     input.value = '';
     input.focus();
 });
@@ -114,10 +145,16 @@ const clearListOfTodos = (list) => {
     const listItems = list.querySelectorAll('.todo-item');
 
     for (const listItem of listItems) {
-        listItem.remove();
+
+        listItem.classList.add('fadeOut');
+
+        setTimeout(() => {
+            listItem.remove();
+            updateTodos();
+        }, 400);
+       
     }
 
-    updateTodos();
 }
 
 const clearAllUnfinishedButton = document.getElementById('clear-all-unfinished');
@@ -131,10 +168,10 @@ if (window.localStorage.todoData) {
 }
 
 for (const todo of todos) {
-    const todoElement = addTodo(todo.title, false);
+    const todoElement = addTodo(todo.title, false, false);
 
     if (todo.completed) {
-        checkOffTodo(todoElement);
+        checkOffTodo(todoElement, false);
     }
 }
 
