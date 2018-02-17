@@ -26,7 +26,7 @@
                 <label for="new task" hidden="true">Add new task</label>
                 <input id="input" class="appearance-none border-solid border-grey-light border-r lg:border-r-0 border-t border-l border-b p-2 w-full" name="new task" type="text"
                     placeholder="Add new task to the list..." />
-                <button class="flex items-center justify-center border-solid border-grey-light border appearance-none m-2 lg:m-0 lg:w-1/6 w-full h-full p-1 hover:bg-grey-light" type="submit">
+                <button aria-label="click to add the task" class="flex items-center justify-center border-solid border-grey-light border appearance-none m-2 lg:m-0 lg:w-1/6 w-full h-full p-1 hover:bg-grey-light" type="submit">
                     <span class="p-1">Add todo</span>
                     <i class="material-icons">add</i>
                 </button>
@@ -41,19 +41,19 @@
                     <li id="unfinished-template" class="flex justify-between list-reset p-2 group border-transparent border-solid border-t border-b hover:border-grey todo-item opacity-0">
                         <span class="w-full flex-grow todo-title"></span>
                         <div class="flex-no-shrink">
-                            <button id="check-button" class="appearance-none check-button group-hover:text-green">
+                            <button aria-label="click to checkoff task" id="check-button" class="appearance-none check-button group-hover:text-green">
                                 <i class="material-icons group-hover:text-green">check</i>
                             </button>
-                            <button class="appearance-none undo-button group-hover:text-blue">
+                            <button aria-label="click to undo checkoff" class="appearance-none undo-button group-hover:text-blue">
                                 <i class="material-icons">redo</i>
                             </button>
-                            <button id="delete-button" class="appearance-none delete-button">
+                            <button aria-label="click to delete task" id="delete-button" class="appearance-none delete-button">
                                 <i class="material-icons">delete</i>
                             </button>
                         </div>
                     </li>
                 </ul>
-                <button id="clear-all-unfinished" class="flex-none flex justify-center items-center bg-grey-light w-full">
+                <button aria-label="click to clear the list from tasks" id="clear-all-unfinished" class="flex-none flex justify-center items-center bg-grey-light w-full">
                     <span class="p-1">Clear all unfinished</span>
                     <i class="material-icons p-1">clear</i>
                 </button>
@@ -67,19 +67,19 @@
                     <li id="finished-template" class="flex justify-between list-reset p-2 group border-transparent border-solid border-t border-b hover:border-grey todo-item opacity-0">
                         <span class="w-full flex-grow todo-title"></span>
                         <div class="flex-no-shrink">
-                            <button id="check-button" class="appearance-none check-button group-hover:text-green">
+                            <button aria-label="click to checkoff task" id="check-button" class="appearance-none check-button group-hover:text-green">
                                 <i class="material-icons group-hover:text-green">check</i>
                             </button>
-                            <button class="appearance-none undo-button group-hover:text-blue">
+                            <button aria-label="click to undo checkoff" class="appearance-none undo-button group-hover:text-blue">
                                 <i class="material-icons">redo</i>
                             </button>
-                            <button id="delete-button" class="appearance-none delete-button">
+                            <button aria-label="click to delete task" id="delete-button" class="appearance-none delete-button">
                                 <i class="material-icons">delete</i>
                             </button>
                         </div>
                     </li>
                 </ul>
-                <button id="clear-all-finished" class="flex-none flex justify-center items-center bg-grey-light w-full">
+                <button aria-label="click to clear the list from tasks" id="clear-all-finished" class="flex-none flex justify-center items-center bg-grey-light w-full">
                     <span class="p-1">Clear all finished</span>
                     <i class="material-icons p-1">clear</i>
                 </button>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="m-2 lg:mt-4 lg:mr-0">
-            <button id="delete-all-button" class="flex items-center border border-1 border-red-lighter p-1 ml-auto hover:bg-red-lighter ">
+            <button aria-label="click to delete all tasks on site" id="delete-all-button" class="flex items-center border border-1 border-red-lighter p-1 ml-auto hover:bg-red-lighter ">
                 <span>Delete all tasks</span>
                 <i class="material-icons align-middle">clear</i>
             </button>
