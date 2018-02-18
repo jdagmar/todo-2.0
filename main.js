@@ -21,16 +21,38 @@ const isValidInput = (todoTitle) => {
     return true;
 }
 
-const showAlert = () => {
-    const alert = document.getElementById('alert');
-    alert.classList.remove('hidden');
+/* validates user input and prevents user to add empty todos */
+const isTodoTitleEmpty = (todoTitle) => {
+    if (todoTitle.trim() === ''){
+
+        return true;
+    }
+
+    return false;
+}
+
+const showAlert = (error) => {
+
+    if (error === 'invalid'){
+        const alert = document.getElementById('alert');
+        alert.classList.remove('hidden');
+    } else {
+        const alert = document.getElementById('empty');
+        alert.classList.remove('hidden');
+    }
+    
 }
 
 const addTodo = (todoTitle, validate, animate) => {
+    console.log(todoTitle);
+    if  (validate && isTodoTitleEmpty(todoTitle)){
+        showAlert('empty');
+        return;
+    }
 
     //if todo already exist leave the function and don't add todo
     if (validate && !isValidInput(todoTitle)) {
-        showAlert();
+        showAlert('invalid');
         return;
     }
 
