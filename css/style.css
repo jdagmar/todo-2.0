@@ -11,30 +11,24 @@
 /* animations */
 .fadeIn {
     opacity: 1;
-    animation: fadeIn 400ms;
+    -webkit-animation: fadeIn 400ms;
+            animation: fadeIn 400ms;
 }
 
 .fadeOut {
     opacity: 0;
-    animation: fadeOut 400ms;
+    -webkit-animation: fadeOut 400ms;
+            animation: fadeOut 400ms;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0;}
+    to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 /* for some reasons these classes dont come with the CDN */

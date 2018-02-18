@@ -7,6 +7,7 @@ const finishedList = document.getElementById('finished-list');
 const unfinishedTemplate = document.getElementById('unfinished-template');
 const finishedTemplate = document.getElementById('finished-template');
 
+/* do demonstrate the ui for the first time user we show 2 example todos */
 let todos = [
     { title: 'This is a finished task', completed: true },
     { title: 'This is an unfinished task', completed: false }
@@ -45,6 +46,7 @@ const addTodo = (todoTitle, validate, animate) => {
     checkButton.addEventListener('click', () => checkOffTodo(todoElement, true));
     undoButton.addEventListener('click', () => undoTodo(todoElement));
 
+    /* we dont want any animation when user refresh the page so we control this here */
     if(animate){
         todoElement.classList.add('fadeIn');
     } else {
@@ -86,6 +88,7 @@ const checkOffTodo = (todoElement, animate) => {
     const todoItem = todoElement.querySelector('.todo-title');
     todoItem.classList.add('line-through');
 
+    /* we dont want any animation when user refresh the page so we control this here */
     if (animate){
         todoItem.classList.add('fadeOut');
         setTimeout(() => {
