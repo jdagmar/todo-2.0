@@ -23,7 +23,7 @@ const isValidInput = (todoTitle) => {
 
 /* validates user input and prevents user to add empty todos */
 const isTodoTitleEmpty = (todoTitle) => {
-    if (todoTitle.trim() === ''){
+    if (todoTitle.trim() === '') {
 
         return true;
     }
@@ -33,19 +33,27 @@ const isTodoTitleEmpty = (todoTitle) => {
 
 const showAlert = (error) => {
 
-    if (error === 'invalid'){
+    if (error === 'invalid') {
         const alert = document.getElementById('alert');
         alert.classList.remove('hidden');
     } else {
         const alert = document.getElementById('empty');
         alert.classList.remove('hidden');
     }
-    
+
+}
+
+const hideAlerts = () => {
+    const duplicationAlert = document.getElementById('alert');
+    duplicationAlert.classList.add('hidden');
+
+    const emptyAlert = document.getElementById('empty');
+    emptyAlert.classList.add('hidden');
 }
 
 const addTodo = (todoTitle, validate, animate) => {
     console.log(todoTitle);
-    if  (validate && isTodoTitleEmpty(todoTitle)){
+    if (validate && isTodoTitleEmpty(todoTitle)) {
         showAlert('empty');
         return;
     }
@@ -83,6 +91,8 @@ const addTodo = (todoTitle, validate, animate) => {
 
     // append the new item to unfinishedList
     unfinishedList.appendChild(todoElement);
+
+    hideAlerts();
 
     // to save new todo localstorage must be updated
     updateTodos();
