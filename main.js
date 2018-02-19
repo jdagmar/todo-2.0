@@ -9,7 +9,7 @@ const deleteAllButton = document.getElementById('delete-all-button');
 
 let todos = loadTodosFromLocalStorage();
 
-/* validates user input and prevents duplicate todos */
+// validates user input and prevents duplicate todos
 const isValidInput = (todoTitle) => {
 
     for (todo of todos) {
@@ -21,8 +21,9 @@ const isValidInput = (todoTitle) => {
     return true;
 }
 
-/* validates user input and prevents user to add empty todos */
+// validates user input and prevents user to add empty todos
 const isTodoTitleEmpty = (todoTitle) => {
+
     if (todoTitle.trim() === '') {
 
         return true;
@@ -35,38 +36,38 @@ const showAlert = (error) => {
 
     if (error === 'invalid') {
         const duplicationAlert = document.getElementById('alert-duplicate');
-        alert.classList.remove('hidden');
+        duplicationAlert.classList.remove('hidden');
     } else {
         const emptyAlert = document.getElementById('alert-empty');
-        alert.classList.remove('hidden');
+        emptyAlert.classList.remove('hidden');
     }
 
 }
 
 const hideAlerts = () => {
     const duplicationAlert = document.getElementById('alert-duplicate');
-    alert.classList.add('hidden');
+    duplicationAlert.classList.add('hidden');
 
     const emptyAlert = document.getElementById('alert-empty');
-    alert.classList.add('hidden');
+    emptyAlert.classList.add('hidden');
 }
 
 const addTodo = (todoTitle, validate, animate) => {
-    console.log(todoTitle);
+
     if (validate && isTodoTitleEmpty(todoTitle)) {
         showAlert('empty');
         return;
     }
 
-    //if todo already exist leave the function and don't add todo
+    // if todo already exist, leave the function and don't add todo
     if (validate && !isValidInput(todoTitle)) {
         showAlert('invalid');
         return;
     }
 
-    //instead of using innerHTML each todo-item is cloned
+    // instead of using innerHTML each todo-item is cloned
     const todoElement = todoItemTemplate.cloneNode(true);
-    //id is used to hide template in css but new items should be shown
+    // id is used to hide template in css but new items should be shown
     todoElement.id = '';
 
     // sets the todoTitle to the inserted todos title
@@ -82,7 +83,9 @@ const addTodo = (todoTitle, validate, animate) => {
     const undoButton = todoElement.querySelector('.undo-button');
     undoButton.addEventListener('click', () => undoTodo(todoElement));
 
-    //We dont want any animation when user refresh the page so we control this here
+    /* the animation shouldn't be triggered when site is refreshed,
+    so animate is only true when called inside the add function,
+    not when the todos are rendered from storage */    
     if (animate) {
         todoElement.classList.add('fadeIn');
     } else {
@@ -102,24 +105,24 @@ const addTodo = (todoTitle, validate, animate) => {
 /* updates the localstorage */
 const updateTodos = () => {
 
-    //get all todo-items in the unfinishedList except the template
+    // get all todo-items in the unfinishedList except the template
     const todoItems = unfinishedList.querySelectorAll('.todo-item:not([id="template"]) .todo-title');
     todos = [];
 
-    //push in each the the unfinished todos
+    // push in each the the unfinished todos
     for (const todo of todoItems) {
         todos.push({ title: todo.innerText, completed: false });
     }
 
-    //gets all todo-items in finishedList
+    // gets all todo-items in finishedList
     const completedItems = finishedList.querySelectorAll('.todo-item .todo-title');
 
-    //push in each the the finished todos
+    // push in each the the finished todos
     for (const todo of completedItems) {
         todos.push({ title: todo.innerText, completed: true });
     }
 
-    //converts array to JSON string for readability and saves in localstorage
+    // converts array to JSON string for readability and saves in localstorage
     window.localStorage.todoData = JSON.stringify(todos);
 }
 
@@ -135,13 +138,14 @@ const checkOffTodo = (todoElement, animate) => {
     const todoTitle = todoElement.querySelector('.todo-title');
     todoTitle.classList.add('line-through');
 
-    /* to make sure the animations is not triggered when user refresh the page the function
-    we check if animate is true or false when the function is called */
+    /* the animation shouldn't be triggered when site is refreshed,
+    so animate is only true when called inside the checkoff function,
+    not when the todos are rendered from storage */
     if (animate) {
         todoTitle.classList.add('fadeOut');
 
         /* the item should fade out in the unfinished list before it fades in into the
-         finished div, to make sure this happens a setTimeout is used */
+        finished div, to make sure this happens a setTimeout is used */
         setTimeout(() => {
             finishedList.appendChild(todoElement);
             todoTitle.classList.remove('fadeOut');
@@ -214,7 +218,7 @@ function loadTodosFromLocalStorage() {
         // converts todo from JSON string back to an array
         todos = JSON.parse(window.localStorage.todoData);
     } else {
-        //if localstorage is empty ie for first time usage we add to example todos for demo
+        // if localstorage is empty ie for first time usage we add to example todos for demo
         todos = [
             { title: 'This is a finished task', completed: true },
             { title: 'This is an unfinished task', completed: false }
