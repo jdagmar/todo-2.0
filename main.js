@@ -34,21 +34,21 @@ const isTodoTitleEmpty = (todoTitle) => {
 const showAlert = (error) => {
 
     if (error === 'invalid') {
-        const alert = document.getElementById('alert');
+        const duplicationAlert = document.getElementById('alert-duplicate');
         alert.classList.remove('hidden');
     } else {
-        const alert = document.getElementById('empty');
+        const emptyAlert = document.getElementById('alert-empty');
         alert.classList.remove('hidden');
     }
 
 }
 
 const hideAlerts = () => {
-    const duplicationAlert = document.getElementById('alert');
-    duplicationAlert.classList.add('hidden');
+    const duplicationAlert = document.getElementById('alert-duplicate');
+    alert.classList.add('hidden');
 
-    const emptyAlert = document.getElementById('empty');
-    emptyAlert.classList.add('hidden');
+    const emptyAlert = document.getElementById('alert-empty');
+    alert.classList.add('hidden');
 }
 
 const addTodo = (todoTitle, validate, animate) => {
