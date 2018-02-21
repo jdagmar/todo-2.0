@@ -6,7 +6,6 @@ const todoItemTemplate = document.getElementById('template');
 const clearAllUnfinishedButton = document.getElementById('clear-all-unfinished');
 const clearAllFinishedButton = document.getElementById('clear-all-finished');
 const deleteAllButton = document.getElementById('delete-all-button');
-
 let todos = loadTodosFromLocalStorage();
 
 // validates user input and prevents duplicate todos
@@ -32,6 +31,7 @@ const isTodoTitleEmpty = (todoTitle) => {
     return false;
 }
 
+// gives user feedback if user fills in the input wrong
 const showAlert = (error) => {
 
     if (error === 'invalid') {
@@ -44,6 +44,7 @@ const showAlert = (error) => {
 
 }
 
+// hides the alert again if the user fills in the input successfully
 const hideAlerts = () => {
     const duplicationAlert = document.getElementById('alert-duplicate');
     duplicationAlert.classList.add('hidden');
@@ -54,6 +55,7 @@ const hideAlerts = () => {
 
 const addTodo = (todoTitle, validate, animate) => {
 
+    // if add button is clicked when input field is empty dont' add todo
     if (validate && isTodoTitleEmpty(todoTitle)) {
         showAlert('empty');
         return;
@@ -65,7 +67,7 @@ const addTodo = (todoTitle, validate, animate) => {
         return;
     }
 
-    // instead of using innerHTML each todo-item is cloned
+    // instead of using innerHTML each todo-item is cloned to prevent mixing html and JS
     const todoElement = todoItemTemplate.cloneNode(true);
     // id is used to hide template in css but new items should be shown
     todoElement.id = '';

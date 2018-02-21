@@ -1,3 +1,4 @@
+/* hide template and template parts */
 #template {
     display: none;
 }
@@ -30,7 +31,8 @@
     to { opacity: 0; }
 }
 
-/* for some reasons these classes dont come with the CDN */
+/* for some reasons these tailwind classes dont come with the CDN, 
+so they are defined here instead */
 .group:hover .group-hover\:text-green {
     color: #90EE90;
 }
@@ -43,7 +45,7 @@
     min-height: 2.5rem;
 }
 
-/* only way to set fonts with CDN */
+/* since using a CDN for tailwind we net to set fonts here */
 h1, h2 {
     font-family: 'Ubuntu';
 }
